@@ -157,16 +157,15 @@ class Github {
   const contributors = [];
 
   while (true) {
-   const data = await GithubAdapter.getContributors({ page, repo, owner, type: 'all' });
-   contributors.push(...data);
-   if (data.length === 0 || data.length < 100) break;
-   page += 1;
+    const data = await GithubAdapter.getContributors({ page, repo, owner, type: 'all' });
+    contributors.push(...data);
+    if (data.length === 0 || data.length < 100) {
+      break;
+    }
+    page += 1;
   }
 
-  return contributors.filter((_user) => {
-   return _user.type === 'User';
-  });
- }
+  return contributors.filter((_user) => _user.type === 'User');
 }
 
-module.exports = { Github: new Github() };
+
