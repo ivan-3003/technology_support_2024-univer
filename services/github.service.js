@@ -129,7 +129,7 @@ class Github {
 
  async #getUserRepo(username) {
   try {
-   let query = `
+   const query = `
       {
         user(login: "${username}") {
           repositoriesContributedTo(first: 99) {
